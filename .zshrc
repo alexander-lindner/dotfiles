@@ -42,6 +42,21 @@ fi
 export PATH=$POSH_HOME:$PATH
 
 
+if command -v hyprpm &> /dev/null; then
+   # Check if split-monitor-workspaces is already in the list
+    if ! hyprpm list | grep -q "split-monitor-workspaces"; then
+        echo "split-monitor-workspaces is not installed. Installing now..."
+        hyprpm add https://github.com/Duckonaut/split-monitor-workspaces # Add the plugin repository
+        hyprpm enable split-monitor-workspaces # Enable the plugin
+        hyprpm reload # Reload the plugins
+        echo "split-monitor-workspaces has been installed and enabled."
+    else
+        echo "split-monitor-workspaces is already installed."
+    fi
+fi
+
+
+
 eval "$(oh-my-posh --init --shell zsh --config ~/.config/oh-my-posh/quick-term.omp.toml)"
 
 zinit light ohmyzsh/ohmyzsh
