@@ -16,6 +16,8 @@
 # Create your files separately and then link them to this file like this:
 # source = ~/.config/hypr/myColors.conf
 
+source=~/.config/hypr/mocha.conf
+
 
 plugin {
 #    split-monitor-workspaces {
@@ -211,8 +213,8 @@ bind = $mainMod CTRL, right, movefocus, r
 bind = $mainMod, up, movefocus, u
 bind = $mainMod, down, movefocus, d
 
-bind = CTRL, LEFT , workspace, r-1
-bind = CTRL, RIGHT, workspace, r+1
+bind = $mainMod, LEFT , workspace, r-1
+bind = $mainMod, RIGHT, workspace, r+1
 
 bind = $mainMod SHIFT, LEFT , movetoworkspace, r-1
 bind = $mainMod SHIFT, RIGHT, movetoworkspace, r+1
