@@ -54,6 +54,7 @@ zinit snippet OMZP::command-not-found
 zinit snippet OMZP::systemd
 zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
+zinit snippet OMZP::gcloud
 
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
