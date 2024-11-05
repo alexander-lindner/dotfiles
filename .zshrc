@@ -42,7 +42,7 @@ fi
 export PATH=$POSH_HOME:$PATH
 
 
-eval "$(oh-my-posh --init --shell zsh --config ~/.config/oh-my-posh/quick-term.omp.toml)"
+eval "$(oh-my-posh init  zsh --config ~/.config/oh-my-posh/quick-term.omp.toml)"
 
 zinit light ohmyzsh/ohmyzsh
 zinit snippet OMZP::git

@@ -1,0 +1,119 @@
+"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
+final_space = true
+version = 2
+auto_upgrade = true
+
+[[blocks]]
+alignment = "left"
+newline = true
+type = "prompt"
+
+[[blocks.segments]]
+background = "#d75f00"
+foreground = "#f2f3f8"
+style = "diamond"
+leading_diamond = "╭─"
+template = " {{ .Icon }} "
+type = "os"
+
+[blocks.segments.properties]
+alpine = ""
+arch = ""
+centos = ""
+debian = ""
+elementary = ""
+fedora = ""
+gentoo = ""
+linux = ""
+macos = ""
+manjaro = ""
+mint = ""
+opensuse = ""
+raspbian = ""
+ubuntu = ""
+windows = ""
+
+[[blocks.segments]]
+background = "#e4e4e4"
+foreground = "#4e4e4e"
+style = "powerline"
+powerline_symbol = ""
+template = " {{ .UserName }} "
+type = "session"
+
+[[blocks.segments]]
+background = "#0087af"
+foreground = "#f2f3f8"
+style = "powerline"
+powerline_symbol = ""
+template = " {{ .Path }} "
+type = "path"
+
+[blocks.segments.properties]
+style = "agnoster_short"
+max_depth = 3
+folder_icon = "…"
+folder_separator_icon = " <transparent></> "
+
+[[blocks.segments]]
+background = "#378504"
+foreground = "#f2f3f8"
+background_templates = [
+    "{{ if or (.Working.Changed) (.Staging.Changed) }}#a97400{{ end }}",
+    "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#54433a{{ end }}",
+    "{{ if gt .Ahead 0 }}#744d89{{ end }}",
+    "{{ if gt .Behind 0 }}#744d89{{ end }}"
+]
+style = "diamond"
+leading_diamond = "<transparent,background></>"
+template = " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <transparent></> <#121318> {{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <transparent></> <#121318> {{ .Staging.String }}</>{{ end }}{{ if gt .StashCount 0 }} <transparent></> <#121318> {{ .StashCount }}</>{{ end }} "
+trailing_diamond = ""
+type = "git"
+
+[blocks.segments.properties]
+branch_max_length = 25
+fetch_stash_count = true
+fetch_status = true
+branch_icon = " "
+branch_identical_icon = ""
+branch_gone_icon = ""
+
+[[blocks]]
+alignment = "right"
+type = "prompt"
+
+[[blocks.segments]]
+background = "#e4e4e4"
+foreground = "#585858"
+invert_powerline = true
+style = "powerline"
+powerline_symbol = ""
+template = "  {{ .FormattedMs }} "
+type = "executiontime"
+
+[blocks.segments.properties]
+style = "austin"
+always_enabled = true
+
+[[blocks.segments]]
+background = "#d75f00"
+foreground = "#f2f3f8"
+invert_powerline = true
+style = "diamond"
+template = "  {{ .CurrentDate | date .Format }} "
+trailing_diamond = ""
+type = "time"
+
+[blocks.segments.properties]
+time_format = "15:04:05"
+
+[[blocks]]
+alignment = "left"
+newline = true
+type = "prompt"
+
+[[blocks.segments]]
+foreground = "#d75f00"
+style = "plain"
+template = "╰─ {{ if .Root }}#{{else}}${{end}}"
+type = "text"
