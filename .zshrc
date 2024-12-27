@@ -1,5 +1,6 @@
 export EDITOR="nano"
 
+
 # Set the GPG_TTY to be the same as the TTY, either via the env var
 # or via the tty command.
 if [ -n "$TTY" ]; then
@@ -18,10 +19,13 @@ fi
 export PATH="/usr/local/bin:/usr/bin:$PATH"
 
 if [ Darwin = `uname` ]; then
+  export ZSH_DISABLE_COMPFIX="true"
   source $HOME/.profile-macos
+else
+  autoload -Uz compinit && compinit
 fi
 
-autoload -Uz compinit && compinit
+
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if [ ! -d "$ZINIT_HOME" ]; then
@@ -33,7 +37,11 @@ source "${ZINIT_HOME}/zinit.zsh"
 POSH_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/oh-my-posh/"
 if [ ! -f "${POSH_HOME}oh-my-posh" ]; then
    mkdir -p "${POSH_HOME}"
-   curl -Lo "${POSH_HOME}oh-my-posh" https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64
+   if [ Darwin = `uname` ]; then
+    curl -Lo "${POSH_HOME}oh-my-posh" https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-darwin-arm64
+   else
+    curl -Lo "${POSH_HOME}oh-my-posh" https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64
+  fi
    chmod +x "${POSH_HOME}oh-my-posh"
 
    "${POSH_HOME}oh-my-posh" font install meslo
