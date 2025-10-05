@@ -6,7 +6,7 @@
 /*@import '../../.cache/wal/colors-waybar.css'; */
 
 * {
-    font-family: "MesloLGS Nerd Font Mono Bold";
+    font-family: "JetBrainsMono Nerd Font";
     font-size: 16px;
     min-height: 0;
     font-weight: bold;
@@ -17,7 +17,7 @@ window {
     font-size: 16pt;
     color:   	#313244; /* text */
     background-color: rgba(24, 27, 32, 0.9);
-} 
+}
 
 button {
     background-repeat: no-repeat;

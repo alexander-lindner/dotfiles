@@ -34,7 +34,15 @@ final_space = true
 
   [[blocks.segments]]
     style = 'powerline'
-    template = ' {{ .UserName }} '
+    template = ' {{ .UserName }}'
+    foreground = '#4e4e4e'
+    powerline_symbol = ''
+    background = '#e4e4e4'
+    type = 'session'
+
+  [[blocks.segments]]
+    style = 'powerline'
+    template = '@ {{ .HostName }} '
     foreground = '#4e4e4e'
     powerline_symbol = ''
     background = '#e4e4e4'
