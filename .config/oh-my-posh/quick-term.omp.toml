@@ -11,49 +11,17 @@ final_space = true
     style = 'diamond'
     leading_diamond = '╭─'
     template = ' {{ .Icon }} '
-    foreground = '#f2f3f8'
-    background = '#d75f00'
+    foreground = '#1e1e2e'
+    background = '#bac2de'
     type = 'os'
 
-    [blocks.segments.properties]
-      alpine = ''
-      arch = ''
-      centos = ''
-      debian = ''
-      elementary = ''
-      fedora = ''
-      gentoo = ''
-      linux = ''
-      macos = ''
-      manjaro = ''
-      mint = ''
-      opensuse = ''
-      raspbian = ''
-      ubuntu = ''
-      windows = ''
-
-  [[blocks.segments]]
-    style = 'powerline'
-    template = ' {{ .UserName }}'
-    foreground = '#4e4e4e'
-    powerline_symbol = ''
-    background = '#e4e4e4'
-    type = 'session'
-
-  [[blocks.segments]]
-    style = 'powerline'
-    template = '@ {{ .HostName }} '
-    foreground = '#4e4e4e'
-    powerline_symbol = ''
-    background = '#e4e4e4'
-    type = 'session'
 
   [[blocks.segments]]
     style = 'powerline'
     template = ' {{ .Path }} '
-    foreground = '#f2f3f8'
+    foreground = '#1e1e2e'
     powerline_symbol = ''
-    background = '#0087af'
+    background = '#94e2d5'
     type = 'path'
 
     [blocks.segments.properties]
@@ -64,13 +32,17 @@ final_space = true
 
   [[blocks.segments]]
     style = 'diamond'
-    leading_diamond = '<transparent,background></>'
     trailing_diamond = ''
-    template = ' {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <transparent></> <#121318> {{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <transparent></> <#121318> {{ .Staging.String }}</>{{ end }}{{ if gt .StashCount 0 }} <transparent></> <#121318> {{ .StashCount }}</>{{ end }} '
-    foreground = '#f2f3f8'
-    background = '#378504'
+    template = ' {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <transparent></> <#1e1e2e> {{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <transparent></> <#1e1e2e> {{ .Staging.String }}</>{{ end }}{{ if gt .StashCount 0 }} <transparent></> <#1e1e2e> {{ .StashCount }}</>{{ end }} '
+    foreground = '#1e1e2e'
+    background = '#a6e3a1'
     type = 'git'
-    background_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}#a97400{{ end }}', '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#54433a{{ end }}', '{{ if gt .Ahead 0 }}#744d89{{ end }}', '{{ if gt .Behind 0 }}#744d89{{ end }}']
+    background_templates = [
+      '{{ if or (.Working.Changed) (.Staging.Changed) }}#f9e2af{{ end }}',
+      '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#eba0ac{{ end }}',
+      '{{ if gt .Ahead 0 }}#cba6f7{{ end }}',
+      '{{ if gt .Behind 0 }}#89b4fa{{ end }}'
+    ]
 
     [blocks.segments.properties]
       branch_gone_icon = ''
@@ -86,10 +58,19 @@ final_space = true
 
   [[blocks.segments]]
     style = 'powerline'
-    template = '  {{ .FormattedMs }} '
-    foreground = '#585858'
+    template = ' {{ .UserName }}@{{ .HostName }} '
+    foreground = '#11111b'
+    background = '#f38ba8'
     powerline_symbol = ''
-    background = '#e4e4e4'
+    type = 'session'
+    invert_powerline = true
+
+  [[blocks.segments]]
+    style = 'powerline'
+    template = '  {{ .FormattedMs }} '
+    foreground = '#cdd6f4'
+    powerline_symbol = ''
+    background = '#45475a'
     type = 'executiontime'
     invert_powerline = true
 
@@ -101,8 +82,8 @@ final_space = true
     style = 'diamond'
     trailing_diamond = ''
     template = '  {{ .CurrentDate | date .Format }} '
-    foreground = '#f2f3f8'
-    background = '#d75f00'
+    foreground = '#1e1e2e'
+    background = '#fab387'
     type = 'time'
     invert_powerline = true
 
@@ -117,5 +98,5 @@ final_space = true
   [[blocks.segments]]
     style = 'plain'
     template = '╰─ {{ if .Root }}#{{else}}${{end}}'
-    foreground = '#d75f00'
+    foreground = '#bac2de'
     type = 'text'
