@@ -89,3 +89,37 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
 fi
 
 zle_highlight=('paste:none')
+
+if command -v helm &> /dev/null; then
+  export HELM_PLUGINS="$(helm env HELM_PLUGINS)"
+
+
+  targetDir="$HOME/.dotfiles/terraform"
+  terraform_version="1.8.5"
+
+  # Check if terraform is installed
+  if [ ! -f "$targetDir/$terraform_version/terraform" ] ; then
+    echo "Terraform not found. Downloading version $terraform_version..."
+
+    # Ensure target directory exists
+    mkdir -p "$targetDir/$terraform_version"
+
+    # Download and extract Terraform
+    curl -sSL "https://releases.hashicorp.com/terraform/${terraform_version}/terraform_${terraform_version}_darwin_arm64.zip" -o /tmp/terraform.zip
+    unzip -o /tmp/terraform.zip -d "$targetDir/$terraform_version"
+    rm /tmp/terraform.zip
+
+    echo "Terraform $terraform_version installed successfully."
+  fi
+
+  # Export the PATH
+  export PATH="$targetDir/$terraform_version:$PATH"
+
+  autoload -U +X bashcompinit && bashcompinit
+  complete -o nospace -C /Users/b45212/.dotfiles/terraform/1.8.5/terraform terraform
+else
+    autoload -U +X bashcompinit && bashcompinit
+fi
+
+
+
